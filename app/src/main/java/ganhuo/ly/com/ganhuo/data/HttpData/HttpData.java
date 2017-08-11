@@ -2,11 +2,15 @@ package ganhuo.ly.com.ganhuo.data.HttpData;
 
 
 import java.io.File;
+import java.util.List;
 
 import ganhuo.ly.com.ganhuo.data.api.CacheProviders;
-import ganhuo.ly.com.ganhuo.data.api.MovieService;
+import ganhuo.ly.com.ganhuo.data.api.GanHuoService;
 import ganhuo.ly.com.ganhuo.data.retrofit.RetrofitUtils;
+import ganhuo.ly.com.ganhuo.mvp.entity.DataResults;
 import ganhuo.ly.com.ganhuo.util.FileUtil;
+import io.rx_cache.DynamicKey;
+import io.rx_cache.EvictDynamicKey;
 import io.rx_cache.Reply;
 import io.rx_cache.internal.RxCache;
 import rx.Observable;
@@ -28,7 +32,13 @@ public class HttpData extends RetrofitUtils {
     private static final CacheProviders providers = new RxCache.Builder()
             .persistence(cacheDirectory)
             .using(CacheProviders.class);
-    protected static final MovieService service = getRetrofit().create(MovieService.class);
+    protected static final GanHuoService service = getRetrofit().create(GanHuoService.class);
+
+    public void getHomeInfo(Observer<DataResults> observer,  String type, int number, int page) {
+        Observable observable= service.getDataResults(type,number,page);
+        Observable observableCahce=providers.getHomeTypes(observable,new DynamicKey("首页"),new EvictDynamicKey(false)).map(new HttpResultFuncCcche<List<DataResults>>());
+        setSubscribe(observableCahce,observer);
+    }
 
     private static class SingletonHolder {
         private static final HttpData INSTANCE = new HttpData();

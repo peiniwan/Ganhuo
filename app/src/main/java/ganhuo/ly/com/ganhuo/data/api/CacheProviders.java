@@ -1,5 +1,15 @@
 package ganhuo.ly.com.ganhuo.data.api;
 
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import ganhuo.ly.com.ganhuo.mvp.entity.DataResults;
+import io.rx_cache.DynamicKey;
+import io.rx_cache.EvictDynamicKey;
+import io.rx_cache.LifeCache;
+import io.rx_cache.Reply;
+import rx.Observable;
+
 /**
  * 缓存API接口
  *
@@ -11,9 +21,10 @@ package ganhuo.ly.com.ganhuo.data.api;
  * DynamicKeyGroup。驱逐一组与key关联的数据，使用EvictDynamicKeyGroup。比如分页，排序或筛选要求
  */
 public interface CacheProviders {
-    //获取书库对应类别列表  缓存时间 1天
-//    @LifeCache(duration = 7, timeUnit = TimeUnit.DAYS)
-//    Observable<Reply<List<BookInfoListDto>>> getStackTypeList(Observable<List<BookInfoListDto>> oRepos, DynamicKey userName, EvictDynamicKey evictDynamicKey);
+    //缓存时间 1天
+    @LifeCache(duration = 7, timeUnit = TimeUnit.DAYS)
+    Observable<Reply<List<DataResults>>> getHomeTypes(Observable observable, DynamicKey userName, EvictDynamicKey evictDynamicKey);
 
-
+    //获取书库分类信息缓存数据 缓存时间 永久
+//    Observable<Reply<List<BookTypeDto>>> getBookTypes(Observable<List<BookTypeDto>> oRepos, DynamicKey userName, EvictDynamicKey evictDynamicKey);
 }

@@ -1,4 +1,4 @@
-package ganhuo.ly.com.ganhuo.mvp.home.Fragment;
+package ganhuo.ly.com.ganhuo.mvp.home.fragment;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;

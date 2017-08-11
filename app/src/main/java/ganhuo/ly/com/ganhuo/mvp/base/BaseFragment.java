@@ -15,7 +15,15 @@ import butterknife.ButterKnife;
  */
 public abstract class BaseFragment extends Fragment {
 
-    private View mRootView;
+    public View mRootView;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        initData(savedInstanceState);
+
+    }
+
 
     @Nullable
     @Override
@@ -29,12 +37,14 @@ public abstract class BaseFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         initListener();
-        initData();
+        loadData();
     }
+
+    protected abstract void initData(Bundle savedInstanceState);
 
     protected abstract View initView(LayoutInflater inflater, ViewGroup container);
 
     protected abstract void initListener();
 
-    protected abstract void initData();
+    protected abstract void loadData();
 }

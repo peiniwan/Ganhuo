@@ -3,6 +3,8 @@ package ganhuo.ly.com.ganhuo;
 import android.app.Activity;
 import android.app.Application;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +23,8 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
+        Fresco.initialize(this);
+
     }
 
     /**

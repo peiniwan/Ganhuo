@@ -24,6 +24,7 @@ import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import okhttp3.logging.HttpLoggingInterceptor;
 
 /*
  * okHttp的配置
@@ -53,6 +54,8 @@ public class OkHttp3Utils {
                     //添加拦截器
                     .addInterceptor(mTokenInterceptor)
                     .addNetworkInterceptor(TestInterceptor)
+                    .addNetworkInterceptor(
+                            new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.HEADERS))
                     .addInterceptor(TestInterceptor)
                     //添加网络连接器
 //                    .addNetworkInterceptor(new CookiesInterceptor(MyApplication.getInstance().getApplicationContext()))
