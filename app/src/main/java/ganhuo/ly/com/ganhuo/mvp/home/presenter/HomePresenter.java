@@ -22,8 +22,8 @@ public class HomePresenter  implements OnLoadDataListListener<DataResults> {
         mView.showProgress();
     }
 
-    public void getDataResults(String type, int number, int page) {
-        mModel.loadData(this,type,number,page);
+    public void getDataResults(boolean isUseCache,String type, int number, int page) {
+        mModel.loadData(this,isUseCache,type,number,page);
     }
 
     @Override

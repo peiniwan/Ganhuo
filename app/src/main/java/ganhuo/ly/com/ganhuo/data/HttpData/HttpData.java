@@ -34,12 +34,6 @@ public class HttpData extends RetrofitUtils {
             .using(CacheProviders.class);
     protected static final GanHuoService service = getRetrofit().create(GanHuoService.class);
 
-    public void getHomeInfo(Observer<DataResults> observer,  String type, int number, int page) {
-        Observable observable= service.getDataResults(type,number,page);
-        Observable observableCahce=providers.getHomeTypes(observable,new DynamicKey("首页"),new EvictDynamicKey(false)).map(new HttpResultFuncCcche<List<DataResults>>());
-        setSubscribe(observableCahce,observer);
-    }
-
     private static class SingletonHolder {
         private static final HttpData INSTANCE = new HttpData();
     }
@@ -48,12 +42,12 @@ public class HttpData extends RetrofitUtils {
         return SingletonHolder.INSTANCE;
     }
 
-//    //获取app书本类别
-//    public void getBookTypes(Observer<List<BookTypeDto>> observer){
-//        Observable observable=service.getBookTypes();
-//        Observable observableCahce=providers.getBookTypes(observable,new DynamicKey("书本类别"),new EvictDynamicKey(false)).map(new HttpResultFuncCcche<List<BookTypeDto>>());
-//        setSubscribe(observableCahce,observer);
-//    }
+
+    public void getHomeInfo(Observer<DataResults> observer,  boolean isUseCache,String type, int number, int page) {
+        Observable observable= service.getDataResults(type,number,page);
+        Observable observableCahce=providers.getHomeTypes(observable,new DynamicKey("首页"),new EvictDynamicKey(isUseCache)).map(new HttpResultFuncCcche<List<DataResults>>());
+        setSubscribe(observableCahce,observer);
+    }
 
     /**
      * 插入观察者

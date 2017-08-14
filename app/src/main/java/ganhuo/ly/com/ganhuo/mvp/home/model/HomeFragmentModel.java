@@ -10,7 +10,7 @@ import rx.Observer;
 
 public class HomeFragmentModel {
 
-    public void loadData(final OnLoadDataListListener listener, String type, int number, int page) {
+    public void loadData(final OnLoadDataListListener listener,boolean isUseCache ,String type, int number, int page) {
         HttpData.getInstance().getHomeInfo(new Observer<DataResults>() {
             @Override
             public void onCompleted() {
@@ -26,6 +26,6 @@ public class HomeFragmentModel {
             public void onNext(DataResults homeDto) {
                 listener.onSuccess(homeDto);
             }
-        },type,number,page);
+        }, isUseCache,type,number,page);
     }
 }
