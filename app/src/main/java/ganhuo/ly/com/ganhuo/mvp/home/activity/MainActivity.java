@@ -1,6 +1,7 @@
 package ganhuo.ly.com.ganhuo.mvp.home.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -13,8 +14,8 @@ import java.util.ArrayList;
 
 import ganhuo.ly.com.ganhuo.R;
 import ganhuo.ly.com.ganhuo.mvp.base.BaseActivity;
-import ganhuo.ly.com.ganhuo.mvp.home.fragment.DiscoveryFragment;
 import ganhuo.ly.com.ganhuo.mvp.home.adapter.MyPagerAdapter;
+import ganhuo.ly.com.ganhuo.mvp.home.fragment.DiscoveryFragment;
 
 public class MainActivity extends BaseActivity {
     private Toolbar toolbar;
@@ -72,16 +73,9 @@ public class MainActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_read:
-//                Intent intent_read = new Intent(this, ReadActivity.class);
-//                startActivity(intent_read);
-//                break;
-//            case R.id.action_about_me:
-//                WebAcitivity.newIntent(this, "http://www.hugeterry.cn/about", "HugeTerry");
-//                break;
-//            case R.id.action_about:
-//                Intent intent_about = new Intent(this, AboutActivity.class);
-//                startActivity(intent_about);
-//                break;
+                Intent intent_read = new Intent(this, ReadActivity.class);
+                startActivity(intent_read);
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

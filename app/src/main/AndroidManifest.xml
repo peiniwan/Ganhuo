@@ -27,6 +27,7 @@
         </activity>
         <activity android:name=".mvp.home.activity.WebAcitivity"/>
         <activity android:name=".mvp.home.activity.ReadActivity"/>
+        <activity android:name=".mvp.home.activity.ImageActivity"/>
 
     </application>
 

@@ -15,6 +15,7 @@ import java.util.List;
 
 import ganhuo.ly.com.ganhuo.R;
 import ganhuo.ly.com.ganhuo.mvp.entity.Results;
+import ganhuo.ly.com.ganhuo.mvp.home.activity.ImageActivity;
 
 /**
  * Created by liuyu1 on 2017/8/14.
@@ -52,9 +53,9 @@ public class GirlyAdapter extends RecyclerView.Adapter<GirlyAdapter.GirlyViewHol
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                ImageActivity.newIntent(context,
-//                        girly_list.get(position).getUrl(),
-//                        girly_list.get(position).getDesc());
+                ImageActivity.newIntent(context,
+                        girly_list.get(position).getUrl(),
+                        girly_list.get(position).getDesc());
             }
         });
     }

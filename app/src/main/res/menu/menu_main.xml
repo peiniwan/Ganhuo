@@ -6,12 +6,4 @@
         android:icon="@drawable/ic_chrome_reader_mode_white_24dp"
         android:title="分类阅读"
         app:showAsAction="always" />
-    <!--<item-->
-        <!--android:id="@+id/action_about_me"-->
-        <!--android:title="关于开发者"-->
-        <!--app:showAsAction="never" />-->
-    <!--<item-->
-        <!--android:id="@+id/action_about"-->
-        <!--android:title="关于「趣刻」"-->
-        <!--app:showAsAction="never" />-->
 </menu>

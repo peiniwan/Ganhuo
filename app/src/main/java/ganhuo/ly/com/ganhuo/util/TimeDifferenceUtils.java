@@ -5,10 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * Created by hugeterry(http://hugeterry.cn)
- * Date: 16/2/22 17:30
- */
+
 public class TimeDifferenceUtils {
     public static String getTimeDifference(String time) {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
