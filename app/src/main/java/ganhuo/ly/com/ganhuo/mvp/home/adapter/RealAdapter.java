@@ -14,6 +14,7 @@ import java.util.List;
 import ganhuo.ly.com.ganhuo.R;
 import ganhuo.ly.com.ganhuo.common.Constant;
 import ganhuo.ly.com.ganhuo.mvp.entity.Results;
+import ganhuo.ly.com.ganhuo.mvp.home.activity.WebAcitivity;
 
 /**
  * Created by liuyu1 on 2017/8/14.
@@ -86,9 +87,9 @@ public class RealAdapter extends RecyclerView.Adapter<RealAdapter.RealViewHolder
             textView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    WebAcitivity.newIntent(context,
-//                            real_list.get(position).get(num).getUrl(),
-//                            real_list.get(position).get(num).getDesc());
+                    WebAcitivity.newIntent(context,
+                            real_list.get(position).get(num).getUrl(),
+                            real_list.get(position).get(num).getDesc());
                 }
             });
         }

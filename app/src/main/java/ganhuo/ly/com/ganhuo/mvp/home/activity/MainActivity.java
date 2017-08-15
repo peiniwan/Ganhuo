@@ -1,4 +1,4 @@
-package ganhuo.ly.com.ganhuo.mvp.home;
+package ganhuo.ly.com.ganhuo.mvp.home.activity;
 
 import android.content.Context;
 import android.support.design.widget.TabLayout;

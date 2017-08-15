@@ -161,10 +161,10 @@ public class DiscoveryFragment extends BaseFragment implements HomeFragmentView 
             case "干货":
                 FRESH_GANHUO_TIME = 0;
                 ganhuo_real_list.clear();
-                homePresenter.getDataResults(isUseCache,"Android", fi_num, NOW_PAGE_FI);
-                homePresenter.getDataResults(isUseCache,"iOS", fi_num, NOW_PAGE_FI);
-                homePresenter.getDataResults(isUseCache,"前端", fi_num, NOW_PAGE_FI);
-                homePresenter.getDataResults(isUseCache,"拓展资源", fi_num, NOW_PAGE_FI);
+                homePresenter.getDataResults(isUseCache,"Android", fi_num, NOW_PAGE_GH);
+                homePresenter.getDataResults(isUseCache,"iOS", fi_num, NOW_PAGE_GH);
+                homePresenter.getDataResults(isUseCache,"前端", fi_num, NOW_PAGE_GH);
+                homePresenter.getDataResults(isUseCache,"拓展资源", fi_num, NOW_PAGE_GH);
 
                 break;
             case "妹纸":

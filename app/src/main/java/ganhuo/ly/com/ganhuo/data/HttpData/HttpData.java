@@ -45,7 +45,7 @@ public class HttpData extends RetrofitUtils {
 
     public void getHomeInfo(Observer<DataResults> observer,  boolean isUseCache,String type, int number, int page) {
         Observable observable= service.getDataResults(type,number,page);
-        Observable observableCahce=providers.getHomeTypes(observable,new DynamicKey("首页"),new EvictDynamicKey(isUseCache)).map(new HttpResultFuncCcche<List<DataResults>>());
+        Observable observableCahce=providers.getHomeTypes(observable,new DynamicKey("首页"),new EvictDynamicKey(!isUseCache)).map(new HttpResultFuncCcche<List<DataResults>>());
         setSubscribe(observableCahce,observer);
     }
 
