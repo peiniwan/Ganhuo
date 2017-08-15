@@ -1,6 +1,7 @@
 package ganhuo.ly.com.ganhuo.mvp.home.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import java.util.List;
 import ganhuo.ly.com.ganhuo.R;
 import ganhuo.ly.com.ganhuo.common.Constant;
 import ganhuo.ly.com.ganhuo.mvp.entity.Results;
+import ganhuo.ly.com.ganhuo.mvp.home.activity.ReadActivity;
 import ganhuo.ly.com.ganhuo.mvp.home.activity.WebAcitivity;
 
 /**
@@ -74,9 +76,9 @@ public class RealAdapter extends RecyclerView.Adapter<RealAdapter.RealViewHolder
         holder.toMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(context, ReadActivity.class);
-//                intent.putExtra("numToSetCurrentItem", num);
-//                context.startActivity(intent);
+                Intent intent = new Intent(context, ReadActivity.class);
+                intent.putExtra("numToSetCurrentItem", num);
+                context.startActivity(intent);
             }
         });
     }

@@ -45,5 +45,7 @@ dependencies {
 
     compile 'com.wang.avi:library:1.0.2'
     compile 'com.nineoldandroids:library:2.4.0'
+    compile 'cn.hugeterry.coordinatortablayout:coordinatortablayout:1.0.6'
+
 
 }

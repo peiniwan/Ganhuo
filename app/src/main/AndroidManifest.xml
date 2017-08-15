@@ -26,6 +26,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".mvp.home.activity.WebAcitivity"/>
+        <activity android:name=".mvp.home.activity.ReadActivity"/>
+
     </application>
 
 </manifest>
