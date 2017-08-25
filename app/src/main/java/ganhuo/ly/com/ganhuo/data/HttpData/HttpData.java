@@ -4,10 +4,14 @@ package ganhuo.ly.com.ganhuo.data.HttpData;
 import java.io.File;
 import java.util.List;
 
+import ganhuo.ly.com.ganhuo.common.Constant;
 import ganhuo.ly.com.ganhuo.data.api.CacheProviders;
 import ganhuo.ly.com.ganhuo.data.api.GanHuoService;
+import ganhuo.ly.com.ganhuo.data.api.ZhihuService;
 import ganhuo.ly.com.ganhuo.data.retrofit.RetrofitUtils;
 import ganhuo.ly.com.ganhuo.mvp.entity.DataResults;
+import ganhuo.ly.com.ganhuo.mvp.entity.ZhiHuDetailResults;
+import ganhuo.ly.com.ganhuo.mvp.entity.ZhiHuResults;
 import ganhuo.ly.com.ganhuo.util.FileUtil;
 import io.rx_cache.DynamicKey;
 import io.rx_cache.EvictDynamicKey;
@@ -32,7 +36,9 @@ public class HttpData extends RetrofitUtils {
     private static final CacheProviders providers = new RxCache.Builder()
             .persistence(cacheDirectory)
             .using(CacheProviders.class);
-    protected static final GanHuoService service = getRetrofit().create(GanHuoService.class);
+    protected GanHuoService ganService = getRetrofit(Constant.Urls.API_SERVER).create(GanHuoService.class);
+    protected ZhihuService zhiService = getRetrofit(Constant.Urls.ZHIHU_DAILY_BEFORE).create(ZhihuService.class);
+    protected ZhihuService zhiDetailService = getRetrofit(Constant.Urls.ZHIHU_DAILY_OFFLINE_NEWS).create(ZhihuService.class);
 
     private static class SingletonHolder {
         private static final HttpData INSTANCE = new HttpData();
@@ -43,11 +49,25 @@ public class HttpData extends RetrofitUtils {
     }
 
 
-    public void getHomeInfo(Observer<DataResults> observer,  boolean isUseCache,String type, int number, int page) {
-        Observable observable= service.getDataResults(type,number,page);
-        Observable observableCahce=providers.getHomeTypes(observable,new DynamicKey("首页"),new EvictDynamicKey(!isUseCache)).map(new HttpResultFuncCcche<List<DataResults>>());
-        setSubscribe(observableCahce,observer);
+    public void getHomeInfo(Observer<DataResults> observer, boolean isUseCache, String type, int number, int page) {
+        Observable observable = ganService.getDataResults(type, number, page);
+        Observable observableCahce = providers.getHomeTypes(observable, new DynamicKey("首页"), new EvictDynamicKey(!isUseCache)).map(new HttpResultFuncCcche<List<DataResults>>());
+        setSubscribe(observableCahce, observer);
     }
+
+    public void getZhihuInfo(Observer<ZhiHuResults> observer, String date) {
+        Observable observable = zhiService.getDataResults(date);
+//        Observable observableCahce = providers.getHomeTypes(observable, new DynamicKey("首页"), new EvictDynamicKey(!isUseCache)).map(new HttpResultFuncCcche<List<DataResults>>());
+        setSubscribe(observable, observer);
+    }
+
+    public void getZhihuDetail(Observer<ZhiHuDetailResults> observer, String id) {
+        Observable observable = zhiDetailService.getDataResultsDetail(id);
+//        Observable observableCahce = providers.getHomeTypes(observable, new DynamicKey("首页"), new EvictDynamicKey(!isUseCache)).map(new HttpResultFuncCcche<List<DataResults>>());
+        setSubscribe(observable, observer);
+    }
+
+
 
     /**
      * 插入观察者

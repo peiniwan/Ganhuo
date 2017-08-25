@@ -46,17 +46,14 @@ public class DiscoveryFragment extends BaseFragment implements HomeFragmentView 
     private static final String ARG_TITLE = "title";
     private String mTitle;
     private static int FRESH_GANHUO_TIME = 4;
-    private static int fi_num = Constant.FI_NUM;
-    private static int gh_num = Constant.GH_NUM;
-    private static int mz_num = Constant.MZ_NUM;
+    private static int fi_num = Constant.Num.FI_NUM;
+    private static int mz_num = Constant.Num.MZ_NUM;
     private static int NOW_PAGE_FI = 1;
     private static int NOW_PAGE_GH = 1;
     private static int NOW_PAGE_MZ = 1;
     private HomePresenter homePresenter;
-    private List<Results> part_list = new ArrayList<>();
     private List<Results> ganhuo_list;
     private List<List<Results>> ganhuo_real_list = new ArrayList<>();
-    private List<Results> girly_list = new ArrayList<>();
     private boolean isTop = true;
 
 

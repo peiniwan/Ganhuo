@@ -8,4 +8,6 @@
     <dimen name="item_text_textsize">16sp</dimen>
     <dimen name="item_text_kid_textsize">15sp</dimen>
     <dimen name="item_title_message">12sp</dimen>
+    <dimen name="tab_text_size">14sp</dimen>
+
 </resources>

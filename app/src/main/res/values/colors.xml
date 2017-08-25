@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#0ba25d</color>
-    <color name="colorPrimaryDark">#098049</color>
+    <color name="colorPrimary">#5068A9</color>
+    <color name="colorPrimaryDark">#324E7B</color>
     <color name="colorAccent">#ffffff</color>
 
     <color name="text_primary">#000000</color>
     <color name="text_secondary">#87000000</color>
     <color name="text_disabled">#38000000</color>
+    <color name="colorActivityBackground" >#FAFAFA</color>
+    <color name="colorTabTextUnSelected">#D3D3D2</color>
+    <color name="colorTabTextSelected">#FDFDFD</color>
+    <color name="colorTabIndicator">#FDFDFD</color>
+    <color name="main_white">#f2f4f5</color>
+    <!--页面背景的颜色-->
+    <color name="colorPageBg">#f2f4f5</color>
+    <!--item的5.0一下版本选择器颜色-->
+    <color name="itemLowBackground">#d9d9d9</color>
+    <!--正文文字颜色-->
+    <color name="colorContent">#ff333333</color>
+    <color name="colorNavLine">#E0E0E0</color>
+
 </resources>

@@ -84,7 +84,7 @@ public class RealAdapter extends RecyclerView.Adapter<RealAdapter.RealViewHolder
     }
 
     private void setupHolderTextView(TextView textView, final int num, final int position) {
-        for (int i = 0; i <= Constant.GH_NUM; i++) {
+        for (int i = 0; i <= Constant.Num.GH_NUM; i++) {
             textView.setText(real_list.get(position).get(num).getDesc());
             textView.setOnClickListener(new View.OnClickListener() {
                 @Override

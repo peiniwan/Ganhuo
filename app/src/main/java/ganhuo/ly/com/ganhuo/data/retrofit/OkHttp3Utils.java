@@ -55,7 +55,7 @@ public class OkHttp3Utils {
                     .addInterceptor(mTokenInterceptor)
                     .addNetworkInterceptor(TestInterceptor)
                     .addNetworkInterceptor(
-                            new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.HEADERS))
+                            new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
                     .addInterceptor(TestInterceptor)
                     //添加网络连接器
 //                    .addNetworkInterceptor(new CookiesInterceptor(MyApplication.getInstance().getApplicationContext()))

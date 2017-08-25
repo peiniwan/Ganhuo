@@ -39,7 +39,7 @@ public class ReadFragment extends BaseFragment implements HomeFragmentView {
 
     private static final String ARG_TITLE = "title";
     private String mTitle;
-    private static int read_num = Constant.READ_NUM;
+    private static int read_num = Constant.Num.READ_NUM;
     private static int NOW_PAGE_READ = 1;
     private boolean isTop = true;
     private HomePresenter homePresenter;
@@ -84,7 +84,7 @@ public class ReadFragment extends BaseFragment implements HomeFragmentView {
         swipyRefreshLayout.setOnRefreshListener(new SwipyRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh(SwipyRefreshLayoutDirection direction) {
-                Log.d("MainActivity", "Refresh triggered at "
+                Log.d("HomeActivity", "Refresh triggered at "
                         + (direction == SwipyRefreshLayoutDirection.TOP ? "top" : "bottom"));
                 Observable.timer(2, TimeUnit.SECONDS)
                         .observeOn(AndroidSchedulers.mainThread())
