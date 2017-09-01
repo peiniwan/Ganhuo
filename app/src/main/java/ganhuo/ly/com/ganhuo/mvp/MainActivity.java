@@ -18,6 +18,7 @@ import ganhuo.ly.com.ganhuo.mvp.base.BaseActivity;
 import ganhuo.ly.com.ganhuo.mvp.home.activity.HomeActivity;
 import ganhuo.ly.com.ganhuo.mvp.home.activity.ReadActivity;
 import ganhuo.ly.com.ganhuo.mvp.home.fragment.GanHuoFragment;
+import ganhuo.ly.com.ganhuo.mvp.meizi.fragment.SisterFragment;
 import ganhuo.ly.com.ganhuo.mvp.zhihu.fragment.ZhihuMainFragment;
 import ganhuo.ly.com.ganhuo.util.PerfectClickListener;
 
@@ -33,6 +34,7 @@ public class MainActivity extends BaseActivity {
     private FrameLayout fl_content;
     private GanHuoFragment ganHuoFragment;
     private ZhihuMainFragment zhihuFragment;
+    private SisterFragment sisterFragment;
 
     @Override
     protected void loadViewLayout() {
@@ -60,6 +62,8 @@ public class MainActivity extends BaseActivity {
         headerView.findViewById(R.id.ll_nav_zhihu).setOnClickListener(mListener);
         headerView.findViewById(R.id.ll_nav_daima).setOnClickListener(mListener);
         headerView.findViewById(R.id.ll_nav_exit).setOnClickListener(mListener);
+        headerView.findViewById(R.id.ll_nav_sister).setOnClickListener(mListener);
+
     }
 
     private PerfectClickListener mListener = new PerfectClickListener() {
@@ -71,16 +75,18 @@ public class MainActivity extends BaseActivity {
                 public void run() {
                     switch (v.getId()) {
                         case R.id.ll_nav_zhihu:
-                            getSupportFragmentManager().beginTransaction().show(zhihuFragment).hide(ganHuoFragment).commit();
+                            getSupportFragmentManager().beginTransaction().show(zhihuFragment).hide(ganHuoFragment).hide(sisterFragment).commit();
                             break;
                         case R.id.ll_nav_daima:
-                            getSupportFragmentManager().beginTransaction().show(ganHuoFragment).hide(zhihuFragment).commit();
-
-                            break;
-                        case R.id.ll_nav_exit:
-//                            finish();
+//                            getSupportFragmentManager().beginTransaction().show(ganHuoFragment).hide(zhihuFragment).hide(sisterFragment).commit();
                             Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                             startActivity(intent);
+                            break;
+                        case R.id.ll_nav_sister:
+                            getSupportFragmentManager().beginTransaction().show(sisterFragment).hide(zhihuFragment).hide(ganHuoFragment).commit();
+                            break;
+                        case R.id.ll_nav_exit:
+                            finish();
                             break;
                         default:
                             break;
@@ -121,10 +127,12 @@ public class MainActivity extends BaseActivity {
     protected void processLogic() {
         ganHuoFragment = new GanHuoFragment();
         zhihuFragment = new ZhihuMainFragment();
+        sisterFragment = new SisterFragment();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.add(R.id.fl_content, zhihuFragment).
                 add(R.id.fl_content, ganHuoFragment).
-                show(zhihuFragment).hide(ganHuoFragment).commit();
+                add(R.id.fl_content, sisterFragment).
+                show(zhihuFragment).hide(ganHuoFragment).hide(sisterFragment).commit();
     }
 
     @Override

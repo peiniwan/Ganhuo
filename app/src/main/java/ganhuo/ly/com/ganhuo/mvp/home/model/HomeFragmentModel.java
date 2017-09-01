@@ -1,5 +1,7 @@
 package ganhuo.ly.com.ganhuo.mvp.home.model;
 
+import android.util.Log;
+
 import ganhuo.ly.com.ganhuo.data.HttpData.HttpData;
 import ganhuo.ly.com.ganhuo.mvp.entity.DataResults;
 import rx.Observer;
@@ -20,11 +22,15 @@ public class HomeFragmentModel {
             @Override
             public void onError(Throwable e) {
                 listener.onFailure(e);
+                Log.d("getData","2");
+
             }
 
             @Override
             public void onNext(DataResults homeDto) {
                 listener.onSuccess(homeDto);
+                Log.d("getData","3");
+
             }
         }, isUseCache,type,number,page);
     }

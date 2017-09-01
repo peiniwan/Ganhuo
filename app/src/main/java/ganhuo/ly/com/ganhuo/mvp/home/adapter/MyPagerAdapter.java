@@ -17,7 +17,6 @@ public class MyPagerAdapter extends FragmentStatePagerAdapter {
     public MyPagerAdapter(FragmentManager fm, ArrayList<Fragment> mFragments, String[] mTitles) {
         super(fm);
         this.mFragments = mFragments;
-
         this.mTitles = mTitles;
     }
 
@@ -35,4 +34,5 @@ public class MyPagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         return mFragments.get(position);
     }
+
 }

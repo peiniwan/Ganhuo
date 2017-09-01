@@ -5,6 +5,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -154,6 +155,7 @@ public class DiscoveryFragment extends BaseFragment implements HomeFragmentView 
                     NOW_PAGE_FI = 1;
                 }
                 homePresenter.getDataResults(isUseCache,"all", fi_num, NOW_PAGE_FI);
+                Log.d("getData","1");
                 break;
             case "干货":
                 FRESH_GANHUO_TIME = 0;
@@ -176,6 +178,8 @@ public class DiscoveryFragment extends BaseFragment implements HomeFragmentView 
 
     @Override
     public void newDatas(DataResults dataResults) {
+        Log.d("getData","4");
+
         if (dataResults.isError()) {
             Snackbar.make(recyclerview, "服务器出问题啦", Snackbar.LENGTH_SHORT).show();
         } else {
@@ -184,6 +188,8 @@ public class DiscoveryFragment extends BaseFragment implements HomeFragmentView 
                 ganhuo_list.addAll(dataResults.getResults());
                 ganhuo_real_list.add(ganhuo_list);
                 FRESH_GANHUO_TIME++;
+                Log.d("getData","5");
+
             }
 
             if (isTop) {

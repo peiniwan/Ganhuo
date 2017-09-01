@@ -7,9 +7,11 @@ import java.util.List;
 import ganhuo.ly.com.ganhuo.common.Constant;
 import ganhuo.ly.com.ganhuo.data.api.CacheProviders;
 import ganhuo.ly.com.ganhuo.data.api.GanHuoService;
+import ganhuo.ly.com.ganhuo.data.api.HuaBangService;
 import ganhuo.ly.com.ganhuo.data.api.ZhihuService;
 import ganhuo.ly.com.ganhuo.data.retrofit.RetrofitUtils;
 import ganhuo.ly.com.ganhuo.mvp.entity.DataResults;
+import ganhuo.ly.com.ganhuo.mvp.entity.HuaResults;
 import ganhuo.ly.com.ganhuo.mvp.entity.ZhiHuDetailResults;
 import ganhuo.ly.com.ganhuo.mvp.entity.ZhiHuResults;
 import ganhuo.ly.com.ganhuo.util.FileUtil;
@@ -39,6 +41,7 @@ public class HttpData extends RetrofitUtils {
     protected GanHuoService ganService = getRetrofit(Constant.Urls.API_SERVER).create(GanHuoService.class);
     protected ZhihuService zhiService = getRetrofit(Constant.Urls.ZHIHU_DAILY_BEFORE).create(ZhihuService.class);
     protected ZhihuService zhiDetailService = getRetrofit(Constant.Urls.ZHIHU_DAILY_OFFLINE_NEWS).create(ZhihuService.class);
+    protected HuaBangService huaBangService = getRetrofit(Constant.Urls.HUA_BANG_URL).create(HuaBangService.class);
 
     private static class SingletonHolder {
         private static final HttpData INSTANCE = new HttpData();
@@ -67,6 +70,12 @@ public class HttpData extends RetrofitUtils {
         setSubscribe(observable, observer);
     }
 
+
+    public void getHuaInfo(Observer<HuaResults> observer) {
+        Observable observable = huaBangService.getDataResults("45128","0ebee127eb894f5c99ed8a7d8452e4c7","35","20","1");
+//        Observable observableCahce = providers.getHomeTypes(observable, new DynamicKey("首页"), new EvictDynamicKey(!isUseCache)).map(new HttpResultFuncCcche<List<DataResults>>());
+        setSubscribe(observable, observer);
+    }
 
 
     /**
