@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -98,12 +97,12 @@ public class HuaFragment extends BaseFragment implements HuaFragmentView {
         recyclerview.setLayoutManager(llm);
         HuaAdapter   mAdapter = new HuaAdapter(getActivity(), null);
         recyclerview.setAdapter(mAdapter);
-        mAdapter.setOnItemClickListener(new HuaAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                Log.d("position", "position:" + position);
-            }
-        });
+//        mAdapter.setOnItemClickListener(new HuaAdapter.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(View view, int position) {
+//                Log.d("position", "position:" + position);
+//            }
+//        });
     }
 
     private void shareQuestion(String questionUrl, String questionTitle) {

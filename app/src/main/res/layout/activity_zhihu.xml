@@ -25,6 +25,7 @@
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tabLayout"
+            app:tabMode="scrollable"
             style="@style/tabLayoutStyle"/>
 
     </android.support.design.widget.AppBarLayout>

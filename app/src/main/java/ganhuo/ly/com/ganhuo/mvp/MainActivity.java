@@ -15,7 +15,6 @@ import android.widget.Toast;
 
 import ganhuo.ly.com.ganhuo.R;
 import ganhuo.ly.com.ganhuo.mvp.base.BaseActivity;
-import ganhuo.ly.com.ganhuo.mvp.home.activity.HomeActivity;
 import ganhuo.ly.com.ganhuo.mvp.home.activity.ReadActivity;
 import ganhuo.ly.com.ganhuo.mvp.home.fragment.GanHuoFragment;
 import ganhuo.ly.com.ganhuo.mvp.meizi.fragment.SisterFragment;
@@ -78,9 +77,10 @@ public class MainActivity extends BaseActivity {
                             getSupportFragmentManager().beginTransaction().show(zhihuFragment).hide(ganHuoFragment).hide(sisterFragment).commit();
                             break;
                         case R.id.ll_nav_daima:
-//                            getSupportFragmentManager().beginTransaction().show(ganHuoFragment).hide(zhihuFragment).hide(sisterFragment).commit();
-                            Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-                            startActivity(intent);
+                            //换到首页也无法显示
+                            getSupportFragmentManager().beginTransaction().show(ganHuoFragment).hide(zhihuFragment).hide(sisterFragment).commit();
+//                            Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+//                            startActivity(intent);
                             break;
                         case R.id.ll_nav_sister:
                             getSupportFragmentManager().beginTransaction().show(sisterFragment).hide(zhihuFragment).hide(ganHuoFragment).commit();

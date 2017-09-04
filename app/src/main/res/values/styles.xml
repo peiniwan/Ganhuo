@@ -78,7 +78,6 @@
         <item name="android:theme">@style/ThemeOverlay.AppCompat.Dark</item>
         <item name="tabBackground">?attr/colorPrimary</item>
         <item name="tabIndicatorColor">@android:color/white</item>
-        <item name="tabMode">scrollable</item>
     </style>
 
 
