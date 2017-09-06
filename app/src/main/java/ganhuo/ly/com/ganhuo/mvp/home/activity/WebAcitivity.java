@@ -37,7 +37,7 @@ public class WebAcitivity extends AppCompatActivity {
     private String url;
     private String desc;
 
-    public static final String EXTRA_WEB_URL = "url";
+    public static final String  EXTRA_WEB_URL = "url";
     public static final String EXTRA_WEB_DESC = "desc";
 
     public static Intent newIntent(Context context, String url, String desc) {
