@@ -1,4 +1,4 @@
-package ganhuo.ly.com.ganhuo.mvp.meizi.adapter;
+package ganhuo.ly.com.ganhuo.mvp.huaban.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

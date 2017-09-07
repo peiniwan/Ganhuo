@@ -1,4 +1,4 @@
-package ganhuo.ly.com.ganhuo.mvp.meizi.model;
+package ganhuo.ly.com.ganhuo.mvp.huaban.model;
 
 import ganhuo.ly.com.ganhuo.data.HttpData.HttpData;
 import ganhuo.ly.com.ganhuo.mvp.entity.HuaResults;
@@ -11,7 +11,7 @@ import rx.Observer;
 
 public class HuaFragmentModel {
 
-    public void loadData(final OnLoadDataListListener listener) {
+    public void loadData(final OnLoadDataListListener listener, String type,int max) {
         HttpData.getInstance().getHuaInfo(new Observer<HuaResults>() {
             @Override
             public void onCompleted() {
@@ -29,6 +29,6 @@ public class HuaFragmentModel {
 
             }
 
-        });
+        }, type,max);
     }
 }

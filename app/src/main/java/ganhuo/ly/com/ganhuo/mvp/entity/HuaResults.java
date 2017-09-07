@@ -1,6 +1,6 @@
 package ganhuo.ly.com.ganhuo.mvp.entity;
 
-import com.google.gson.annotations.SerializedName;
+import java.util.List;
 
 /**
  * Created by liuyu1 on 2017/8/22.
@@ -8,80 +8,204 @@ import com.google.gson.annotations.SerializedName;
 
 public class HuaResults {
 
+    private List<PinsBean> pins;
 
-    /**
-     * showapi_res_code : 0
-     * showapi_res_body : {"0":{"title":"一只热爱摇滚的2.5次元秋田核犬求拖走\u2026","thumb":"http://zzssa.b0.upaiyun.com/Uploads/2016-11-14/0060lm7Tgw1f9qbvupqbjj30dw0ku42b.jpg","url":"http://www.hbmeinv.com/show-35-33766-1.html"}}
-     */
-
-    private int showapi_res_code;
-    private ShowapiResBodyBean showapi_res_body;
-
-    public int getShowapi_res_code() {
-        return showapi_res_code;
+    public List<PinsBean> getPins() {
+        return pins;
     }
 
-    public void setShowapi_res_code(int showapi_res_code) {
-        this.showapi_res_code = showapi_res_code;
+    public void setPins(List<PinsBean> pins) {
+        this.pins = pins;
     }
 
-    public ShowapiResBodyBean getShowapi_res_body() {
-        return showapi_res_body;
-    }
-
-    public void setShowapi_res_body(ShowapiResBodyBean showapi_res_body) {
-        this.showapi_res_body = showapi_res_body;
-    }
-
-    public static class ShowapiResBodyBean {
+    public static class PinsBean {
         /**
-         * 0 : {"title":"一只热爱摇滚的2.5次元秋田核犬求拖走\u2026","thumb":"http://zzssa.b0.upaiyun.com/Uploads/2016-11-14/0060lm7Tgw1f9qbvupqbjj30dw0ku42b.jpg","url":"http://www.hbmeinv.com/show-35-33766-1.html"}
+         * pin_id : 1306268429
+         * user_id : 888052
+         * board_id : 2443219
+         * file_id : 25139841
+         * file : {"id":25139841,"farm":"farm1","bucket":"hbimg","key":"5d5a6f0638e75d7e21ae113e3c573421bfe720291a48a-CEXw9Z","type":"image/jpeg","width":481,"height":712,"frames":1,"theme":"030303"}
+         * media_type : 0
+         * source : pinterest.com
+         * link : http://pinterest.com/pin/283726845247814773/
          */
 
-        @SerializedName("0")
-        private _$0Bean _$0;
+        private int pin_id;
+        private int user_id;
+        private int board_id;
+        private int file_id;
+        private FileBean file;
+        private int media_type;
+        private String source;
+        private String link;
 
-        public _$0Bean get_$0() {
-            return _$0;
+        public String getRaw_text() {
+            return raw_text;
         }
 
-        public void set_$0(_$0Bean _$0) {
-            this._$0 = _$0;
+        public void setRaw_text(String raw_text) {
+            this.raw_text = raw_text;
         }
 
-        public static class _$0Bean {
+        private String raw_text;
+
+        public int getPin_id() {
+            return pin_id;
+        }
+
+        public void setPin_id(int pin_id) {
+            this.pin_id = pin_id;
+        }
+
+        public int getUser_id() {
+            return user_id;
+        }
+
+        public void setUser_id(int user_id) {
+            this.user_id = user_id;
+        }
+
+        public int getBoard_id() {
+            return board_id;
+        }
+
+        public void setBoard_id(int board_id) {
+            this.board_id = board_id;
+        }
+
+        public int getFile_id() {
+            return file_id;
+        }
+
+        public void setFile_id(int file_id) {
+            this.file_id = file_id;
+        }
+
+        public FileBean getFile() {
+            return file;
+        }
+
+        public void setFile(FileBean file) {
+            this.file = file;
+        }
+
+        public int getMedia_type() {
+            return media_type;
+        }
+
+        public void setMedia_type(int media_type) {
+            this.media_type = media_type;
+        }
+
+        public String getSource() {
+            return source;
+        }
+
+        public void setSource(String source) {
+            this.source = source;
+        }
+
+        public String getLink() {
+            return link;
+        }
+
+        public void setLink(String link) {
+            this.link = link;
+        }
+
+        public static class FileBean {
             /**
-             * title : 一只热爱摇滚的2.5次元秋田核犬求拖走…
-             * thumb : http://zzssa.b0.upaiyun.com/Uploads/2016-11-14/0060lm7Tgw1f9qbvupqbjj30dw0ku42b.jpg
-             * url : http://www.hbmeinv.com/show-35-33766-1.html
+             * id : 25139841
+             * farm : farm1
+             * bucket : hbimg
+             * key : 5d5a6f0638e75d7e21ae113e3c573421bfe720291a48a-CEXw9Z
+             * type : image/jpeg
+             * width : 481
+             * height : 712
+             * frames : 1
+             * theme : 030303
              */
 
-            private String title;
-            private String thumb;
-            private String url;
+            private int id;
+            private String farm;
+            private String bucket;
+            private String key;
+            private String type;
+            private int width;
+            private int height;
+            private int frames;
+            private String theme;
 
-            public String getTitle() {
-                return title;
+            public int getId() {
+                return id;
             }
 
-            public void setTitle(String title) {
-                this.title = title;
+            public void setId(int id) {
+                this.id = id;
             }
 
-            public String getThumb() {
-                return thumb;
+            public String getFarm() {
+                return farm;
             }
 
-            public void setThumb(String thumb) {
-                this.thumb = thumb;
+            public void setFarm(String farm) {
+                this.farm = farm;
             }
 
-            public String getUrl() {
-                return url;
+            public String getBucket() {
+                return bucket;
             }
 
-            public void setUrl(String url) {
-                this.url = url;
+            public void setBucket(String bucket) {
+                this.bucket = bucket;
+            }
+
+            public String getKey() {
+                return key;
+            }
+
+            public void setKey(String key) {
+                this.key = key;
+            }
+
+            public String getType() {
+                return type;
+            }
+
+            public void setType(String type) {
+                this.type = type;
+            }
+
+            public int getWidth() {
+                return width;
+            }
+
+            public void setWidth(int width) {
+                this.width = width;
+            }
+
+            public int getHeight() {
+                return height;
+            }
+
+            public void setHeight(int height) {
+                this.height = height;
+            }
+
+            public int getFrames() {
+                return frames;
+            }
+
+            public void setFrames(int frames) {
+                this.frames = frames;
+            }
+
+            public String getTheme() {
+                return theme;
+            }
+
+            public void setTheme(String theme) {
+                this.theme = theme;
             }
         }
     }

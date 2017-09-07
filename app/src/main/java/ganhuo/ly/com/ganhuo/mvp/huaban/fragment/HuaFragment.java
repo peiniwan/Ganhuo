@@ -1,9 +1,10 @@
-package ganhuo.ly.com.ganhuo.mvp.meizi.fragment;
+package ganhuo.ly.com.ganhuo.mvp.huaban.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,15 +12,15 @@ import android.view.ViewGroup;
 import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout;
 import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayoutDirection;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import ganhuo.ly.com.ganhuo.R;
-import ganhuo.ly.com.ganhuo.common.Constant;
 import ganhuo.ly.com.ganhuo.mvp.base.BaseFragment;
 import ganhuo.ly.com.ganhuo.mvp.entity.HuaResults;
-import ganhuo.ly.com.ganhuo.mvp.meizi.adapter.HuaAdapter;
-import ganhuo.ly.com.ganhuo.mvp.meizi.presenter.HuaPresenter;
-import ganhuo.ly.com.ganhuo.mvp.meizi.view.HuaFragmentView;
+import ganhuo.ly.com.ganhuo.mvp.home.adapter.GirlyAdapter;
+import ganhuo.ly.com.ganhuo.mvp.huaban.presenter.HuaPresenter;
+import ganhuo.ly.com.ganhuo.mvp.huaban.view.HuaFragmentView;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
@@ -32,11 +33,17 @@ public class HuaFragment extends BaseFragment implements HuaFragmentView {
     private SwipyRefreshLayout swipyRefreshLayout;
     private RecyclerView recyclerview;
     private HuaPresenter huaPresenter;
+    private String type;
+    private GirlyAdapter girlyAdapter;
+    private List<HuaResults.PinsBean> pins;
+    private static int NOW_PAGE= 1;
+    private boolean isTop;
 
 
-    public static HuaFragment getInstance() {
+    public static HuaFragment getInstance(String type) {
         HuaFragment fra = new HuaFragment();
         Bundle bundle = new Bundle();
+        bundle.putString("type",type);
         fra.setArguments(bundle);
         return fra;
     }
@@ -45,9 +52,10 @@ public class HuaFragment extends BaseFragment implements HuaFragmentView {
     protected void initData(Bundle savedInstanceState) {
         if (savedInstanceState == null) {
             Bundle bundle = getArguments();
+            type = bundle.getString("type");
         }
         huaPresenter = new HuaPresenter(this);
-        getData(false);
+        getData(false,type,0);
     }
 
     @Override
@@ -63,6 +71,7 @@ public class HuaFragment extends BaseFragment implements HuaFragmentView {
 
     private void initSwipyRefreshLayout() {
         swipyRefreshLayout = (SwipyRefreshLayout) mRootView.findViewById(R.id.swipyrefreshlayout);
+        swipyRefreshLayout.setDirection(SwipyRefreshLayoutDirection.BOTH);
         swipyRefreshLayout.setColorSchemeResources(
                 android.R.color.holo_blue_light,
                 android.R.color.holo_red_light,
@@ -71,9 +80,12 @@ public class HuaFragment extends BaseFragment implements HuaFragmentView {
         swipyRefreshLayout.setDirection(SwipyRefreshLayoutDirection.TOP);
 
         swipyRefreshLayout.setOnRefreshListener(new SwipyRefreshLayout.OnRefreshListener() {
+
             @Override
             public void onRefresh(SwipyRefreshLayoutDirection direction) {
+                isTop = direction == SwipyRefreshLayoutDirection.TOP ? true : false;
 
+                Log.d("direction",direction.name()+""+isTop);
                 Observable.timer(2, TimeUnit.SECONDS)
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(new Action1<Long>() {
@@ -82,12 +94,26 @@ public class HuaFragment extends BaseFragment implements HuaFragmentView {
                                 swipyRefreshLayout.setRefreshing(false);
                             }
                         });
-                getData(false);
+                 if(pins!=null){
+                    int maxId = getMaxId(pins);
+                    getData(false,type,maxId);
+                }
 
             }
         });
 
     }
+
+    /**
+     * 从返回联网结果中保存max值 用于下次联网的关键
+     *
+     * @param
+     * @return
+     */
+    private int getMaxId(List<HuaResults.PinsBean> pins) {
+        return pins.get(pins.size() - 1).getPin_id();
+    }
+
 
     private void initRecyclerView() {
         recyclerview = (RecyclerView) mRootView.findViewById(R.id.recyclerView);
@@ -95,27 +121,17 @@ public class HuaFragment extends BaseFragment implements HuaFragmentView {
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerview.setLayoutManager(llm);
-        HuaAdapter   mAdapter = new HuaAdapter(getActivity(), null);
-        recyclerview.setAdapter(mAdapter);
-//        mAdapter.setOnItemClickListener(new HuaAdapter.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(View view, int position) {
-//                Log.d("position", "position:" + position);
-//            }
-//        });
+        recyclerview.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+        girlyAdapter = new GirlyAdapter(getActivity(), 2);
+        recyclerview.setAdapter(girlyAdapter);
     }
 
-    private void shareQuestion(String questionUrl, String questionTitle) {
-        Intent share = new Intent(Intent.ACTION_SEND);
-        share.setType("text/plain");
-        share.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
-        share.putExtra(Intent.EXTRA_TEXT,
-                questionTitle + " " + questionUrl + Constant.Strings.SHARE_FROM_ZHIHU);
-        startActivity(Intent.createChooser(share, getString(R.string.share_to)));
-    }
 
-    private void getData(boolean isUseCache) {
-        huaPresenter.getDataResults();
+    private void getData(boolean isUseCache,String type,int max) {
+        if(isTop){
+           max=0;
+        }
+        huaPresenter.getDataResults(type,max);
     }
 
 
@@ -141,7 +157,13 @@ public class HuaFragment extends BaseFragment implements HuaFragmentView {
 
     @Override
     public void newDatas(HuaResults data) {
-
+        if (isTop) {
+            girlyAdapter.getResults().clear();
+        }
+        pins = data.getPins();
+        girlyAdapter.getHuaResults().addAll(pins);
+        girlyAdapter.notifyDataSetChanged();
+//        NOW_PAGE_MZ++;
     }
 
 

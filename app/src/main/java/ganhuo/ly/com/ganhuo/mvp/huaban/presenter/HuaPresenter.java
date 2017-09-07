@@ -1,11 +1,11 @@
-package ganhuo.ly.com.ganhuo.mvp.meizi.presenter;
+package ganhuo.ly.com.ganhuo.mvp.huaban.presenter;
 
 import android.util.Log;
 
 import ganhuo.ly.com.ganhuo.mvp.entity.HuaResults;
 import ganhuo.ly.com.ganhuo.mvp.home.model.OnLoadDataListListener;
-import ganhuo.ly.com.ganhuo.mvp.meizi.model.HuaFragmentModel;
-import ganhuo.ly.com.ganhuo.mvp.meizi.view.HuaFragmentView;
+import ganhuo.ly.com.ganhuo.mvp.huaban.model.HuaFragmentModel;
+import ganhuo.ly.com.ganhuo.mvp.huaban.view.HuaFragmentView;
 
 /**
  * Created by liuyu1 on 2017/8/10.
@@ -22,8 +22,8 @@ public class HuaPresenter implements OnLoadDataListListener<HuaResults> {
         mView.showProgress();
     }
 
-    public void getDataResults() {
-        mModel.loadData(this);
+    public void getDataResults(String type,int max) {
+        mModel.loadData(this,type,max);
     }
 
 

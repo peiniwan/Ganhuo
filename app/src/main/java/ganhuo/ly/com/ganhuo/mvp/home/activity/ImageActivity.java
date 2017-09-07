@@ -61,7 +61,7 @@ public class ImageActivity extends BaseActivity{
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_white_24dp);
-        getSupportActionBar().setTitle("beautiful girls");
+        getSupportActionBar().setTitle(desc+"");
     }
 
     @Override

@@ -1,4 +1,4 @@
-package ganhuo.ly.com.ganhuo.mvp.meizi.view;
+package ganhuo.ly.com.ganhuo.mvp.huaban.view;
 
 import ganhuo.ly.com.ganhuo.mvp.entity.HuaResults;
 

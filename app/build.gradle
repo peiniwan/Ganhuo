@@ -25,32 +25,32 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     testCompile 'junit:junit:4.12'
-
+    //android官方
     compile 'com.android.support:appcompat-v7:25.1.0'
     compile 'com.android.support:design:25.1.0'
     compile 'com.android.support:cardview-v7:25.1.0'
-
-
+    //retrofit
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
     compile 'com.squareup.okhttp3:logging-interceptor:3.5.0'
-
+    //rxJava
     compile 'io.reactivex:rxandroid:1.2.1'
     compile 'com.ogaclejapan:rxbinding:1.2.0'
     compile 'com.github.VictorAlbertos.RxCache:core:1.4.6'
-
+    //图片
     compile 'com.facebook.fresco:fresco:1.5.0'
     compile 'com.github.bumptech.glide:glide:3.7.0'
-    compile 'com.jakewharton:butterknife:8.4.0'
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.3'
-
-    compile 'com.wang.avi:library:1.0.2'
+    compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.nineoldandroids:library:2.4.0'
+    //开发辅助
+    compile 'com.wang.avi:library:1.0.2'
     compile 'cn.hugeterry.coordinatortablayout:coordinatortablayout:1.0.6'
     compile 'com.github.Andy671:Dachshund-Tab-Layout:v0.3.0'
-    compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.github.orangegangsters:swipy:1.2.2@aar'
+    compile 'com.jakewharton:butterknife:8.4.0'
+
 
 
 

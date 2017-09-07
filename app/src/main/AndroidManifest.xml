@@ -30,7 +30,7 @@
         <activity android:name=".mvp.home.activity.ReadActivity" />
         <activity android:name=".mvp.home.activity.ImageActivity" />
         <activity android:name=".mvp.home.activity.HomeActivity" />
-
+        <activity android:name=".mvp.huaban.fragment.HuaMmianActivity" />
         <activity
             android:name=".mvp.zhihu.activity.ZhiHuActivity"
            />

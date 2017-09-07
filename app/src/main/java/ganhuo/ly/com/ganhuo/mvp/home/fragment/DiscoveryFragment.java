@@ -141,7 +141,7 @@ public class DiscoveryFragment extends BaseFragment implements HomeFragmentView 
                 break;
             case "妹纸":
                 recyclerview.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
-                girlyAdapter = new GirlyAdapter(getActivity(), null);
+                girlyAdapter = new GirlyAdapter(getActivity(), 1);
                 recyclerview.setAdapter(girlyAdapter);
                 break;
         }
@@ -178,7 +178,6 @@ public class DiscoveryFragment extends BaseFragment implements HomeFragmentView 
 
     @Override
     public void newDatas(DataResults dataResults) {
-        Log.d("getData","4");
 
         if (dataResults.isError()) {
             Snackbar.make(recyclerview, "服务器出问题啦", Snackbar.LENGTH_SHORT).show();
@@ -188,8 +187,6 @@ public class DiscoveryFragment extends BaseFragment implements HomeFragmentView 
                 ganhuo_list.addAll(dataResults.getResults());
                 ganhuo_real_list.add(ganhuo_list);
                 FRESH_GANHUO_TIME++;
-                Log.d("getData","5");
-
             }
 
             if (isTop) {

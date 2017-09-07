@@ -71,8 +71,13 @@ public class HttpData extends RetrofitUtils {
     }
 
 
-    public void getHuaInfo(Observer<HuaResults> observer) {
-        Observable observable = huaBangService.getDataResults("45128","0ebee127eb894f5c99ed8a7d8452e4c7","35","20","1");
+    public void getHuaInfo(Observer<HuaResults> observer, String type, int max) {
+        Observable observable;
+        if (max == 0) {
+            observable = huaBangService.getDataResults(type, 20);
+        } else {
+            observable = huaBangService.getDataResultsMax(type, 20, max);
+        }
 //        Observable observableCahce = providers.getHomeTypes(observable, new DynamicKey("首页"), new EvictDynamicKey(!isUseCache)).map(new HttpResultFuncCcche<List<DataResults>>());
         setSubscribe(observable, observer);
     }

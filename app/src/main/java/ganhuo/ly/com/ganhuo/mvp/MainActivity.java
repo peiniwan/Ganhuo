@@ -15,9 +15,11 @@ import android.widget.Toast;
 
 import ganhuo.ly.com.ganhuo.R;
 import ganhuo.ly.com.ganhuo.mvp.base.BaseActivity;
+import ganhuo.ly.com.ganhuo.mvp.home.activity.HomeActivity;
 import ganhuo.ly.com.ganhuo.mvp.home.activity.ReadActivity;
 import ganhuo.ly.com.ganhuo.mvp.home.fragment.GanHuoFragment;
-import ganhuo.ly.com.ganhuo.mvp.meizi.fragment.SisterFragment;
+import ganhuo.ly.com.ganhuo.mvp.huaban.fragment.HuaMainFragment;
+import ganhuo.ly.com.ganhuo.mvp.huaban.fragment.HuaMmianActivity;
 import ganhuo.ly.com.ganhuo.mvp.zhihu.fragment.ZhihuMainFragment;
 import ganhuo.ly.com.ganhuo.util.PerfectClickListener;
 
@@ -33,7 +35,7 @@ public class MainActivity extends BaseActivity {
     private FrameLayout fl_content;
     private GanHuoFragment ganHuoFragment;
     private ZhihuMainFragment zhihuFragment;
-    private SisterFragment sisterFragment;
+    private HuaMainFragment huaMainFragment;
 
     @Override
     protected void loadViewLayout() {
@@ -74,16 +76,18 @@ public class MainActivity extends BaseActivity {
                 public void run() {
                     switch (v.getId()) {
                         case R.id.ll_nav_zhihu:
-                            getSupportFragmentManager().beginTransaction().show(zhihuFragment).hide(ganHuoFragment).hide(sisterFragment).commit();
+                            getSupportFragmentManager().beginTransaction().show(zhihuFragment).hide(ganHuoFragment).hide(huaMainFragment).commit();
                             break;
                         case R.id.ll_nav_daima:
                             //换到首页也无法显示
-                            getSupportFragmentManager().beginTransaction().show(ganHuoFragment).hide(zhihuFragment).hide(sisterFragment).commit();
-//                            Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-//                            startActivity(intent);
+//                            getSupportFragmentManager().beginTransaction().show(ganHuoFragment).hide(zhihuFragment).hide(huaMainFragment).commit();
+                            Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                            startActivity(intent);
                             break;
                         case R.id.ll_nav_sister:
-                            getSupportFragmentManager().beginTransaction().show(sisterFragment).hide(zhihuFragment).hide(ganHuoFragment).commit();
+//                            getSupportFragmentManager().beginTransaction().show(huaMainFragment).hide(zhihuFragment).hide(ganHuoFragment).commit();
+                            Intent intent1 = new Intent(MainActivity.this, HuaMmianActivity.class);
+                            startActivity(intent1);
                             break;
                         case R.id.ll_nav_exit:
                             finish();
@@ -127,12 +131,12 @@ public class MainActivity extends BaseActivity {
     protected void processLogic() {
         ganHuoFragment = new GanHuoFragment();
         zhihuFragment = new ZhihuMainFragment();
-        sisterFragment = new SisterFragment();
+        huaMainFragment = new HuaMainFragment();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.add(R.id.fl_content, zhihuFragment).
                 add(R.id.fl_content, ganHuoFragment).
-                add(R.id.fl_content, sisterFragment).
-                show(zhihuFragment).hide(ganHuoFragment).hide(sisterFragment).commit();
+                add(R.id.fl_content, huaMainFragment).
+                show(zhihuFragment).hide(ganHuoFragment).hide(huaMainFragment).commit();
     }
 
     @Override

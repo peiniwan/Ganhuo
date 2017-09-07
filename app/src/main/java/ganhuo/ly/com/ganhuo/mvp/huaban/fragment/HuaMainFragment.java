@@ -1,4 +1,4 @@
-package ganhuo.ly.com.ganhuo.mvp.meizi.fragment;
+package ganhuo.ly.com.ganhuo.mvp.huaban.fragment;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -15,18 +15,19 @@ import java.util.ArrayList;
 import ganhuo.ly.com.ganhuo.R;
 import ganhuo.ly.com.ganhuo.mvp.base.BaseFragment;
 import ganhuo.ly.com.ganhuo.mvp.home.adapter.MyPagerAdapter;
-import ganhuo.ly.com.ganhuo.mvp.home.fragment.DiscoveryFragment;
 
 /**
  * Created by liuyu1 on 2017/8/22.
  */
 
-public class SisterFragment extends BaseFragment {
+public class HuaMainFragment extends BaseFragment {
 
     private TabLayout tabLayout;
     private ViewPager vp;
     private ArrayList<Fragment> mFragments;
-    private final String[] mTitles = {"妹纸", "花瓣"};
+    private final String[] mTitles = {"美图", "摄影","美食", "美女"};
+    private final String[] mTitlesType = {"quotes", "photography","food_drink", "beauty"};
+
     private Toolbar toolbar;
 
     @Override
@@ -36,7 +37,7 @@ public class SisterFragment extends BaseFragment {
 
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container) {
-        return inflater.inflate(R.layout.activity_zhihu, container, false);
+        return inflater.inflate(R.layout.activity_home, container, false);
     }
 
     @Override
@@ -52,9 +53,9 @@ public class SisterFragment extends BaseFragment {
 //        setActionBar(toolbar);
         vp.setOffscreenPageLimit(2);
         mFragments = new ArrayList<>();
-
-        mFragments.add(DiscoveryFragment.getInstance(mTitles[0]));
-        mFragments.add(HuaFragment.getInstance());
+        for (String titleType : mTitlesType) {
+            mFragments.add(HuaFragment.getInstance(titleType));
+        }
 
         vp.setAdapter(new MyPagerAdapter(getFragmentManager(), mFragments, mTitles));
         tabLayout.setupWithViewPager(vp);

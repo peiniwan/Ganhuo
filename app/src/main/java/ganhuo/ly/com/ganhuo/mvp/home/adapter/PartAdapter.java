@@ -18,6 +18,8 @@ import java.util.List;
 
 import ganhuo.ly.com.ganhuo.R;
 import ganhuo.ly.com.ganhuo.mvp.entity.Results;
+import ganhuo.ly.com.ganhuo.mvp.home.activity.ImageActivity;
+import ganhuo.ly.com.ganhuo.mvp.home.activity.WebAcitivity;
 
 
 public class PartAdapter extends RecyclerView.Adapter<PartAdapter.PartViewHolder> {
@@ -55,9 +57,9 @@ public class PartAdapter extends RecyclerView.Adapter<PartAdapter.PartViewHolder
                 holder.view.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-//                        WebAcitivity.newIntent(context,
-//                                part_list.get(position).getUrl(),
-//                                part_list.get(position).getDesc());
+                        WebAcitivity.newIntent(context,
+                                part_list.get(position).getUrl(),
+                                part_list.get(position).getDesc());
                     }
                 });
                 break;
@@ -71,9 +73,9 @@ public class PartAdapter extends RecyclerView.Adapter<PartAdapter.PartViewHolder
                 holder.view.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-//                        ImageActivity.newIntent(context,
-//                                part_list.get(position).getUrl(),
-//                                part_list.get(position).getDesc());
+                        ImageActivity.newIntent(context,
+                                part_list.get(position).getUrl(),
+                                part_list.get(position).getDesc());
                     }
                 });
                 break;
@@ -85,9 +87,9 @@ public class PartAdapter extends RecyclerView.Adapter<PartAdapter.PartViewHolder
                 holder.view.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-//                        WebAcitivity.newIntent(context,
-//                                part_list.get(position).getUrl(),
-//                                part_list.get(position).getDesc());
+                        WebAcitivity.newIntent(context,
+                                part_list.get(position).getUrl(),
+                                part_list.get(position).getDesc());
                     }
                 });
                 break;
