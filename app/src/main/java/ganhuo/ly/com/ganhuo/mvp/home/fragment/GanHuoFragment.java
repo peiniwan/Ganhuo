@@ -61,7 +61,7 @@ public class GanHuoFragment extends BaseFragment {
             mFragments.add(DiscoveryFragment.getInstance(title));
         }
         vp.setOffscreenPageLimit(Constant.Num.GH_NUM);
-        vp.setAdapter(new MyPagerAdapter(getFragmentManager(), mFragments, mTitles));
+        vp.setAdapter(new MyPagerAdapter(getChildFragmentManager(), mFragments, mTitles));
         tabLayout.setupWithViewPager(vp);
     }
 

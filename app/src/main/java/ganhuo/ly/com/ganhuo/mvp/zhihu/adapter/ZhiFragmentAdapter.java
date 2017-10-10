@@ -62,7 +62,6 @@ public class ZhiFragmentAdapter extends RecyclerView.Adapter<ZhiFragmentAdapter.
     @Override
     public ZhiFragmentAdapter.CardViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         final Context context = parent.getContext();
-
         final View itemView = LayoutInflater
                 .from(context)
                 .inflate(R.layout.zhihu_list_item, parent, false);
@@ -104,8 +103,7 @@ public class ZhiFragmentAdapter extends RecyclerView.Adapter<ZhiFragmentAdapter.
     @Override
     public void onBindViewHolder(ZhiFragmentAdapter.CardViewHolder holder, int position) {
         ZhiHuResults.StoriesBean storiesBean = zhiHuResults.getStories().get(position);
-//        Log.d("onFailure", storiesBean.getTitle() + "---" + storiesBean.getImages());
-
+//        Log.d("ZhihuFragment", storiesBean.getTitle() + "---" + storiesBean.getImages());
         Glide.with(context)
                 .load(storiesBean.getImages().get(0))
                 .diskCacheStrategy(DiskCacheStrategy.ALL)

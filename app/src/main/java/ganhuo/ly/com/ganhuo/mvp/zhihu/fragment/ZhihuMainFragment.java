@@ -48,7 +48,7 @@ public class ZhihuMainFragment extends BaseFragment {
         toolbar.inflateMenu(R.menu.menu_zhuhu);
         toolbar.setOnMenuItemClickListener(onMenuItemClick);
         vp.setOffscreenPageLimit(Constant.Num.PAGE_COUNT);
-        ZhiPagerAdapter adapter = new ZhiPagerAdapter(getFragmentManager());
+        ZhiPagerAdapter adapter = new ZhiPagerAdapter(getChildFragmentManager());
         vp.setAdapter(adapter);
         tabLayout.setupWithViewPager(vp);
     }

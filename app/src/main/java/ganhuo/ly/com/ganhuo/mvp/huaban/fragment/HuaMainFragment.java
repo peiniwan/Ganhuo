@@ -57,7 +57,7 @@ public class HuaMainFragment extends BaseFragment {
             mFragments.add(HuaFragment.getInstance(titleType));
         }
 
-        vp.setAdapter(new MyPagerAdapter(getFragmentManager(), mFragments, mTitles));
+        vp.setAdapter(new MyPagerAdapter(getChildFragmentManager(), mFragments, mTitles));
         tabLayout.setupWithViewPager(vp);
     }
 

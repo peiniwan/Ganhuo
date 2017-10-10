@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout;
 import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayoutDirection;
@@ -233,7 +234,7 @@ public class DiscoveryFragment extends BaseFragment implements HomeFragmentView 
 
     @Override
     public void showLoadFailMsg() {
-        Snackbar.make(recyclerview, "网络不顺畅嘞,更新不了数据啦", Snackbar.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "网络不顺畅嘞,更新不了数据啦", Toast.LENGTH_SHORT).show();
     }
 
 

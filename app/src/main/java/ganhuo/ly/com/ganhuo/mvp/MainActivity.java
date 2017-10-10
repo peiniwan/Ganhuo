@@ -15,11 +15,9 @@ import android.widget.Toast;
 
 import ganhuo.ly.com.ganhuo.R;
 import ganhuo.ly.com.ganhuo.mvp.base.BaseActivity;
-import ganhuo.ly.com.ganhuo.mvp.home.activity.HomeActivity;
 import ganhuo.ly.com.ganhuo.mvp.home.activity.ReadActivity;
 import ganhuo.ly.com.ganhuo.mvp.home.fragment.GanHuoFragment;
 import ganhuo.ly.com.ganhuo.mvp.huaban.fragment.HuaMainFragment;
-import ganhuo.ly.com.ganhuo.mvp.huaban.fragment.HuaMmianActivity;
 import ganhuo.ly.com.ganhuo.mvp.zhihu.fragment.ZhihuMainFragment;
 import ganhuo.ly.com.ganhuo.util.PerfectClickListener;
 
@@ -79,15 +77,12 @@ public class MainActivity extends BaseActivity {
                             getSupportFragmentManager().beginTransaction().show(zhihuFragment).hide(ganHuoFragment).hide(huaMainFragment).commit();
                             break;
                         case R.id.ll_nav_daima:
-                            //换到首页也无法显示
-//                            getSupportFragmentManager().beginTransaction().show(ganHuoFragment).hide(zhihuFragment).hide(huaMainFragment).commit();
-                            Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-                            startActivity(intent);
+                            getSupportFragmentManager().beginTransaction().show(ganHuoFragment).hide(zhihuFragment).hide(huaMainFragment).commit();
                             break;
                         case R.id.ll_nav_sister:
-//                            getSupportFragmentManager().beginTransaction().show(huaMainFragment).hide(zhihuFragment).hide(ganHuoFragment).commit();
-                            Intent intent1 = new Intent(MainActivity.this, HuaMmianActivity.class);
-                            startActivity(intent1);
+                            getSupportFragmentManager().beginTransaction().show(huaMainFragment).hide(zhihuFragment).hide(ganHuoFragment).commit();
+//                            Intent intent1 = new Intent(MainActivity.this, HuaMmianActivity.class);
+//                            startActivity(intent1);
                             break;
                         case R.id.ll_nav_exit:
                             finish();
