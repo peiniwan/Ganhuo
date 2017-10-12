@@ -9,10 +9,11 @@
         android:id="@+id/nav_head_layout"
         android:layout_width="match_parent"
         android:layout_height="173dp"
-        android:background="@drawable/homepage_header">
+        android:paddingBottom="10dp"
+        android:background="@drawable/home_top_icon">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_marginLeft="20dp"
@@ -22,17 +23,19 @@
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="60dp"
                 android:layout_height="60dp"
+                android:layout_gravity="center_horizontal"
                 android:scaleType="centerCrop"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@drawable/head_icon" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="5dp"
-                android:text="你好，世界"
+                android:text="六月的雨"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="@android:color/white"
-                android:textSize="20sp" />
+                android:textSize="16sp" />
 
         </LinearLayout>
 
@@ -50,6 +53,11 @@
         android:paddingLeft="16dp"
         android:paddingRight="16dp">
 
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/zhi_icon" />
+
 
         <TextView
             android:layout_width="wrap_content"
@@ -60,8 +68,6 @@
             android:textSize="15sp" />
 
     </LinearLayout>
-
-
 
 
     <View
@@ -79,6 +85,11 @@
         android:orientation="horizontal"
         android:paddingLeft="16dp"
         android:paddingRight="16dp">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/gan_icon" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -106,6 +117,11 @@
         android:paddingLeft="16dp"
         android:paddingRight="16dp">
 
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/hua_icon" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -132,6 +148,10 @@
         android:paddingLeft="16dp"
         android:paddingRight="16dp">
 
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/edit" />
 
         <TextView
             android:layout_width="wrap_content"

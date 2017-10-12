@@ -13,9 +13,9 @@
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/main_icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/main_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".mvp.MainActivity">
@@ -29,8 +29,6 @@
         <activity android:name=".mvp.home.activity.WebAcitivity" />
         <activity android:name=".mvp.home.activity.ReadActivity" />
         <activity android:name=".mvp.home.activity.ImageActivity" />
-        <activity android:name=".mvp.home.activity.HomeActivity" />
-        <activity android:name=".mvp.huaban.fragment.HuaMmianActivity" />
         <activity
             android:name=".mvp.zhihu.activity.ZhiHuActivity"
            />
