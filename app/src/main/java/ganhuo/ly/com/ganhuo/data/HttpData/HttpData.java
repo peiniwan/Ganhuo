@@ -58,10 +58,10 @@ public class HttpData extends RetrofitUtils {
         setSubscribe(observableCahce, observer);
     }
 
-    public void getZhihuInfo(Observer<ZhiHuResults> observer, String date) {
+    public void getZhihuInfo(Observer<ZhiHuResults> observer,  boolean isUseCache,String date) {
         Observable observable = zhiService.getDataResults(date);
-//        Observable observableCahce = providers.getHomeTypes(observable, new DynamicKey("首页"), new EvictDynamicKey(!isUseCache)).map(new HttpResultFuncCcche<List<DataResults>>());
-        setSubscribe(observable, observer);
+        Observable observableCahce = providers.getZhiTypes(observable, new DynamicKey("知乎"), new EvictDynamicKey(!isUseCache)).map(new HttpResultFuncCcche<List<ZhiHuResults>>());
+        setSubscribe(observableCahce, observer);
     }
 
     public void getZhihuDetail(Observer<ZhiHuDetailResults> observer, String id) {
@@ -71,15 +71,15 @@ public class HttpData extends RetrofitUtils {
     }
 
 
-    public void getHuaInfo(Observer<HuaResults> observer, String type, int max) {
+    public void getHuaInfo(Observer<HuaResults> observer, boolean isUseCache, String type, int max) {
         Observable observable;
         if (max == 0) {
             observable = huaBangService.getDataResults(type, 20);
         } else {
             observable = huaBangService.getDataResultsMax(type, 20, max);
         }
-//        Observable observableCahce = providers.getHomeTypes(observable, new DynamicKey("首页"), new EvictDynamicKey(!isUseCache)).map(new HttpResultFuncCcche<List<DataResults>>());
-        setSubscribe(observable, observer);
+        Observable observableCahce = providers.getHuaTypes(observable, new DynamicKey("花瓣"), new EvictDynamicKey(!isUseCache)).map(new HttpResultFuncCcche<List<HuaResults>>());
+        setSubscribe(observableCahce, observer);
     }
 
 

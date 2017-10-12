@@ -49,9 +49,8 @@ public class HuaMainFragment extends BaseFragment {
 
     @Override
     protected void loadData() {
-        toolbar.setTitle("妹子");
-//        setActionBar(toolbar);
-        vp.setOffscreenPageLimit(2);
+        toolbar.setTitle("花瓣");
+        vp.setOffscreenPageLimit(4);
         mFragments = new ArrayList<>();
         for (String titleType : mTitlesType) {
             mFragments.add(HuaFragment.getInstance(titleType));

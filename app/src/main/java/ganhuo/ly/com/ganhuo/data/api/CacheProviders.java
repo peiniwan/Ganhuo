@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import ganhuo.ly.com.ganhuo.mvp.entity.DataResults;
+import ganhuo.ly.com.ganhuo.mvp.entity.HuaResults;
+import ganhuo.ly.com.ganhuo.mvp.entity.ZhiHuResults;
 import io.rx_cache.DynamicKey;
 import io.rx_cache.EvictDynamicKey;
 import io.rx_cache.LifeCache;
@@ -25,6 +27,11 @@ public interface CacheProviders {
     @LifeCache(duration = 7, timeUnit = TimeUnit.DAYS)
     Observable<Reply<List<DataResults>>> getHomeTypes(Observable observable, DynamicKey userName, EvictDynamicKey evictDynamicKey);
 
-    //获取书库分类信息缓存数据 缓存时间 永久
-//    Observable<Reply<List<BookTypeDto>>> getBookTypes(Observable<List<BookTypeDto>> oRepos, DynamicKey userName, EvictDynamicKey evictDynamicKey);
+    //缓存时间 1天
+    @LifeCache(duration = 7, timeUnit = TimeUnit.DAYS)
+    Observable<Reply<List<ZhiHuResults>>> getZhiTypes(Observable observable, DynamicKey userName, EvictDynamicKey evictDynamicKey);
+
+    //缓存时间 1天
+    @LifeCache(duration = 7, timeUnit = TimeUnit.DAYS)
+    Observable<Reply<List<HuaResults>>> getHuaTypes(Observable observable, DynamicKey userName, EvictDynamicKey evictDynamicKey);
 }

@@ -75,14 +75,14 @@ public class MainActivity extends BaseActivity {
                     switch (v.getId()) {
                         case R.id.ll_nav_zhihu:
                             getSupportFragmentManager().beginTransaction().show(zhihuFragment).hide(ganHuoFragment).hide(huaMainFragment).commit();
+//                            Intent intent = new Intent(MainActivity.this, ZhiHuActivity.class);
+//                            startActivity(intent);
                             break;
                         case R.id.ll_nav_daima:
                             getSupportFragmentManager().beginTransaction().show(ganHuoFragment).hide(zhihuFragment).hide(huaMainFragment).commit();
                             break;
                         case R.id.ll_nav_sister:
                             getSupportFragmentManager().beginTransaction().show(huaMainFragment).hide(zhihuFragment).hide(ganHuoFragment).commit();
-//                            Intent intent1 = new Intent(MainActivity.this, HuaMmianActivity.class);
-//                            startActivity(intent1);
                             break;
                         case R.id.ll_nav_exit:
                             finish();

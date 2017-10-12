@@ -91,7 +91,7 @@ public class DiscoveryFragment extends BaseFragment implements HomeFragmentView 
     protected void loadData() {
         boolean isFirst = (boolean) SPUtils.get(getActivity(), "isFirst", false);
         if(!isFirst){
-            SPUtils.get(getActivity(), "isFirst", true);
+            SPUtils.put(getActivity(), "isFirst", true);
         }
         getData(isFirst);
     }

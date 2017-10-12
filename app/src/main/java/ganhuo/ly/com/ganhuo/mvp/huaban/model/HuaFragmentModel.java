@@ -11,7 +11,7 @@ import rx.Observer;
 
 public class HuaFragmentModel {
 
-    public void loadData(final OnLoadDataListListener listener, String type,int max) {
+    public void loadData(final OnLoadDataListListener listener, boolean isUseCache ,String type,int max) {
         HttpData.getInstance().getHuaInfo(new Observer<HuaResults>() {
             @Override
             public void onCompleted() {
@@ -29,6 +29,6 @@ public class HuaFragmentModel {
 
             }
 
-        }, type,max);
+        }, isUseCache,type,max);
     }
 }

@@ -22,8 +22,8 @@ public class ZhiPresenter implements OnLoadDataListListener<ZhiHuResults> {
         mView.showProgress();
     }
 
-    public void getDataResults(String date) {
-        mModel.loadData(this,date);
+    public void getDataResults(boolean isUseCache,String date) {
+        mModel.loadData(this,isUseCache,date);
     }
 
     @Override

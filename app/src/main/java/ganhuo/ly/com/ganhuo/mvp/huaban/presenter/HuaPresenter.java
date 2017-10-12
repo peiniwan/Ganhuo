@@ -22,8 +22,8 @@ public class HuaPresenter implements OnLoadDataListListener<HuaResults> {
         mView.showProgress();
     }
 
-    public void getDataResults(String type,int max) {
-        mModel.loadData(this,type,max);
+    public void getDataResults(boolean isUseCache,String type,int max) {
+        mModel.loadData(this,isUseCache,type,max);
     }
 
 

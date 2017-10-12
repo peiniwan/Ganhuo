@@ -12,7 +12,7 @@ import rx.Observer;
 
 public class ZhiFragmentModel {
 
-    public void loadData(final OnLoadDataListListener listener, String date) {
+    public void loadData(final OnLoadDataListListener listener, boolean isUseCache, String date) {
         HttpData.getInstance().getZhihuInfo(new Observer<ZhiHuResults>() {
             @Override
             public void onCompleted() {
@@ -29,7 +29,7 @@ public class ZhiFragmentModel {
                 listener.onSuccess(zhiHuResults);
 
             }
-        }, date);
+        }, isUseCache, date);
     }
 
     public void loadDataDetail(final OnLoadDataListListener listener, String id) {

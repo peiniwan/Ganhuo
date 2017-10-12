@@ -21,6 +21,7 @@ import ganhuo.ly.com.ganhuo.mvp.entity.HuaResults;
 import ganhuo.ly.com.ganhuo.mvp.home.adapter.GirlyAdapter;
 import ganhuo.ly.com.ganhuo.mvp.huaban.presenter.HuaPresenter;
 import ganhuo.ly.com.ganhuo.mvp.huaban.view.HuaFragmentView;
+import ganhuo.ly.com.ganhuo.util.SPUtils;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
@@ -36,14 +37,13 @@ public class HuaFragment extends BaseFragment implements HuaFragmentView {
     private String type;
     private GirlyAdapter girlyAdapter;
     private List<HuaResults.PinsBean> pins;
-    private static int NOW_PAGE= 1;
     private boolean isTop;
 
 
     public static HuaFragment getInstance(String type) {
         HuaFragment fra = new HuaFragment();
         Bundle bundle = new Bundle();
-        bundle.putString("type",type);
+        bundle.putString("type", type);
         fra.setArguments(bundle);
         return fra;
     }
@@ -55,7 +55,6 @@ public class HuaFragment extends BaseFragment implements HuaFragmentView {
             type = bundle.getString("type");
         }
         huaPresenter = new HuaPresenter(this);
-        getData(false,type,0);
     }
 
     @Override
@@ -85,7 +84,7 @@ public class HuaFragment extends BaseFragment implements HuaFragmentView {
             public void onRefresh(SwipyRefreshLayoutDirection direction) {
                 isTop = direction == SwipyRefreshLayoutDirection.TOP ? true : false;
 
-                Log.d("direction",direction.name()+""+isTop);
+                Log.d("direction", direction.name() + "" + isTop);
                 Observable.timer(2, TimeUnit.SECONDS)
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(new Action1<Long>() {
@@ -94,9 +93,9 @@ public class HuaFragment extends BaseFragment implements HuaFragmentView {
                                 swipyRefreshLayout.setRefreshing(false);
                             }
                         });
-                 if(pins!=null){
+                if (pins != null) {
                     int maxId = getMaxId(pins);
-                    getData(false,type,maxId);
+                    getData(false, type, maxId);
                 }
 
             }
@@ -127,11 +126,11 @@ public class HuaFragment extends BaseFragment implements HuaFragmentView {
     }
 
 
-    private void getData(boolean isUseCache,String type,int max) {
-        if(isTop){
-           max=0;
+    private void getData(boolean isUseCache, String type, int max) {
+        if (isTop) {
+            max = 0;
         }
-        huaPresenter.getDataResults(type,max);
+        huaPresenter.getDataResults(isUseCache,type, max);
     }
 
 
@@ -142,6 +141,11 @@ public class HuaFragment extends BaseFragment implements HuaFragmentView {
 
     @Override
     protected void loadData() {
+        boolean isFirst = (boolean) SPUtils.get(getActivity(), "isFirst", false);
+        if (!isFirst) {
+            SPUtils.get(getActivity(), "isFirst", true);
+        }
+        getData(isFirst, type, 0);
 
     }
 
@@ -163,7 +167,6 @@ public class HuaFragment extends BaseFragment implements HuaFragmentView {
         pins = data.getPins();
         girlyAdapter.getHuaResults().addAll(pins);
         girlyAdapter.notifyDataSetChanged();
-//        NOW_PAGE_MZ++;
     }
 
 

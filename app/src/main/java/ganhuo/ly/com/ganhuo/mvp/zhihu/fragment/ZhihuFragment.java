@@ -24,6 +24,7 @@ import ganhuo.ly.com.ganhuo.mvp.zhihu.adapter.ZhiFragmentAdapter;
 import ganhuo.ly.com.ganhuo.mvp.zhihu.presenter.ZhiDetailPresenter;
 import ganhuo.ly.com.ganhuo.mvp.zhihu.presenter.ZhiPresenter;
 import ganhuo.ly.com.ganhuo.mvp.zhihu.view.ZhiFragmentView;
+import ganhuo.ly.com.ganhuo.util.SPUtils;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
@@ -64,7 +65,6 @@ public class ZhihuFragment extends BaseFragment implements ZhiFragmentView {
         }
         zhiPresenter = new ZhiPresenter(this);
         zhiDetailPresenter = new ZhiDetailPresenter(this);
-        getData(false, date);
     }
 
     @Override
@@ -145,7 +145,7 @@ public class ZhihuFragment extends BaseFragment implements ZhiFragmentView {
     }
 
     private void getData(boolean isUseCache, String date) {
-        zhiPresenter.getDataResults(date);
+        zhiPresenter.getDataResults(isUseCache,date);
     }
 
 
@@ -178,7 +178,11 @@ public class ZhihuFragment extends BaseFragment implements ZhiFragmentView {
 
     @Override
     protected void loadData() {
-
+        boolean isFirst = (boolean) SPUtils.get(getActivity(), "isFirst", false);
+        if(!isFirst){
+            SPUtils.put(getActivity(), "isFirst", true);
+        }
+        getData(isFirst, date);
     }
 
     @Override
