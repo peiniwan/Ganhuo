@@ -74,9 +74,9 @@ public class HttpData extends RetrofitUtils {
     public void getHuaInfo(Observer<HuaResults> observer, boolean isUseCache, String type, int max) {
         Observable observable;
         if (max == 0) {
-            observable = huaBangService.getDataResults(type, 20);
+            observable = huaBangService.getDataResults(type, 40);
         } else {
-            observable = huaBangService.getDataResultsMax(type, 20, max);
+            observable = huaBangService.getDataResultsMax(type, 40, max);
         }
         Observable observableCahce = providers.getHuaTypes(observable, new DynamicKey("花瓣"), new EvictDynamicKey(!isUseCache)).map(new HttpResultFuncCcche<List<HuaResults>>());
         setSubscribe(observableCahce, observer);

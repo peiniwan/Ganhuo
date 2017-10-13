@@ -79,6 +79,8 @@ public class GirlyAdapter extends RecyclerView.Adapter<GirlyAdapter.GirlyViewHol
             @Override
             public void onClick(View v) {
                 if (type == 1) {
+                    url_img = girly_list.get(position).getUrl();
+                    des = girly_list.get(position).getDesc();
                     ImageActivity.newIntent(context, url_img, des);
                 } else {
                     String key = huaResults.get(position).getFile().getKey();

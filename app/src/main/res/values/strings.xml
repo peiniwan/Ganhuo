@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">干货</string>
+    <string name="app_name">阅读</string>
     <string name="exit_toast">再按一次退出程序哦~</string>
     <string name="zhihu_daily_today">今日之『知乎日报』|</string>
     <string name="share_this_news">分享这个新闻</string>
