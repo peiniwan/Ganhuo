@@ -54,19 +54,19 @@ public class HttpData extends RetrofitUtils {
 
     public void getHomeInfo(Observer<DataResults> observer, boolean isUseCache, String type, int number, int page) {
         Observable observable = ganService.getDataResults(type, number, page);
-        Observable observableCahce = providers.getHomeTypes(observable, new DynamicKey("首页"), new EvictDynamicKey(!isUseCache)).map(new HttpResultFuncCcche<List<DataResults>>());
+        //!isUseCache
+        Observable observableCahce = providers.getHomeTypes(observable, new DynamicKey("首页"), new EvictDynamicKey(true)).map(new HttpResultFuncCcche<List<DataResults>>());
         setSubscribe(observableCahce, observer);
     }
 
     public void getZhihuInfo(Observer<ZhiHuResults> observer,  boolean isUseCache,String date) {
         Observable observable = zhiService.getDataResults(date);
-        Observable observableCahce = providers.getZhiTypes(observable, new DynamicKey("知乎"), new EvictDynamicKey(!isUseCache)).map(new HttpResultFuncCcche<List<ZhiHuResults>>());
+        Observable observableCahce = providers.getZhiTypes(observable, new DynamicKey("知乎"), new EvictDynamicKey(true)).map(new HttpResultFuncCcche<List<ZhiHuResults>>());
         setSubscribe(observableCahce, observer);
     }
 
     public void getZhihuDetail(Observer<ZhiHuDetailResults> observer, String id) {
         Observable observable = zhiDetailService.getDataResultsDetail(id);
-//        Observable observableCahce = providers.getHomeTypes(observable, new DynamicKey("首页"), new EvictDynamicKey(!isUseCache)).map(new HttpResultFuncCcche<List<DataResults>>());
         setSubscribe(observable, observer);
     }
 
@@ -78,7 +78,7 @@ public class HttpData extends RetrofitUtils {
         } else {
             observable = huaBangService.getDataResultsMax(type, 40, max);
         }
-        Observable observableCahce = providers.getHuaTypes(observable, new DynamicKey("花瓣"), new EvictDynamicKey(!isUseCache)).map(new HttpResultFuncCcche<List<HuaResults>>());
+        Observable observableCahce = providers.getHuaTypes(observable, new DynamicKey("花瓣"), new EvictDynamicKey(true)).map(new HttpResultFuncCcche<List<HuaResults>>());
         setSubscribe(observableCahce, observer);
     }
 

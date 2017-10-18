@@ -1,6 +1,7 @@
 package ganhuo.ly.com.ganhuo.mvp.home.activity;
 
 import android.content.Context;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.MenuItem;
@@ -26,7 +27,7 @@ public class ReadActivity extends BaseActivity {
     private ViewPager vp;
     private int[] mImageArray, mColorArray;
     private ArrayList<Fragment> mFragments;
-    private final String[] mTitles = {"Android", "iOS", "前端", "拓展资源"};
+    private final String[] mTitles = {"Android", "iOS", "前端", "App","瞎推荐","拓展资源"};
     private int numToSetCurrentItem = 0;
 
     @Override
@@ -58,17 +59,21 @@ public class ReadActivity extends BaseActivity {
         mImageArray = new int[]{R.mipmap.bg_android,
                 R.mipmap.bg_ios,
                 R.mipmap.bg_js,
+                R.mipmap.bg_js,
+                R.mipmap.bg_ios,
                 R.mipmap.bg_other};
         mColorArray = new int[]{android.R.color.holo_blue_light,
                 android.R.color.holo_red_light,
                 android.R.color.holo_orange_light,
+                android.R.color.holo_purple,
+                android.R.color.holo_purple,
                 android.R.color.holo_green_light};
 
         mCoordinatorTabLayout.setTitle("分类阅读")
                 .setBackEnable(true)
                 .setImageArray(mImageArray, mColorArray)
                 .setupWithViewPager(vp);
-
+        mCoordinatorTabLayout.getTabLayout().setTabMode(TabLayout.MODE_SCROLLABLE);
         vp.setCurrentItem(numToSetCurrentItem);
     }
 
