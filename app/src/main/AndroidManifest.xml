@@ -29,9 +29,8 @@
         <activity android:name=".mvp.home.activity.WebAcitivity" />
         <activity android:name=".mvp.home.activity.ReadActivity" />
         <activity android:name=".mvp.home.activity.ImageActivity" />
-        <activity
-            android:name=".mvp.zhihu.activity.ZhiHuActivity"
-           />
+        <activity android:name=".mvp.zhihu.activity.ZhiHuActivity" />
+        <activity android:name=".mvp.meizi.MeiziListActivity" />
 
     </application>
 

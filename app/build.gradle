@@ -50,9 +50,4 @@ dependencies {
     compile 'com.github.Andy671:Dachshund-Tab-Layout:v0.3.0'
     compile 'com.github.orangegangsters:swipy:1.2.2@aar'
     compile 'com.jakewharton:butterknife:8.4.0'
-
-
-
-
-
 }

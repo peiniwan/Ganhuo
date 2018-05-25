@@ -21,6 +21,7 @@ public class Constant {
         public static final String ZHIHU_DAILY_PURIFY_BEFORE = "http://zhihudailypurify.herokuapp.com/news/";
         public static final String SEARCH = "http://zhihudailypurify.herokuapp.com/search/";
         public static final String HUA_BANG_URL = "https://api.huaban.com";
+        public static final String MEIZI_URL = "http://192.168.19.240:8000";
 
     }
 

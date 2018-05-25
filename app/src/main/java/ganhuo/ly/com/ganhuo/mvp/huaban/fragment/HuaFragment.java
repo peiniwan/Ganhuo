@@ -1,7 +1,6 @@
 package ganhuo.ly.com.ganhuo.mvp.huaban.fragment;
 
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
@@ -123,10 +122,6 @@ public class HuaFragment extends BaseFragment implements HuaFragmentView {
 
     private void initRecyclerView() {
         recyclerview = (RecyclerView) mRootView.findViewById(R.id.recyclerView);
-
-        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
-        recyclerview.setLayoutManager(llm);
         recyclerview.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         girlyAdapter = new GirlyAdapter(getActivity(), 2);
         recyclerview.setAdapter(girlyAdapter);
@@ -136,7 +131,6 @@ public class HuaFragment extends BaseFragment implements HuaFragmentView {
     private void getData(boolean isUseCache, String type, int max) {
         if (isTop) {
             max = 0;
-
         }
         huaPresenter.getDataResults(isUseCache, type, max);
     }

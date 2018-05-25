@@ -9,8 +9,8 @@
         android:id="@+id/nav_head_layout"
         android:layout_width="match_parent"
         android:layout_height="173dp"
-        android:paddingBottom="10dp"
-        android:background="@drawable/home_top_icon">
+        android:background="@drawable/home_top_icon"
+        android:paddingBottom="10dp">
 
         <LinearLayout
             android:layout_width="100dp"
@@ -127,6 +127,37 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:text="花瓣"
+            android:textColor="@color/colorContent"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:background="@color/colorNavLine" />
+
+    <LinearLayout
+        android:id="@+id/ll_nav_meizi"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/ripple_one_item_bg"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/hua_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:text="妹子图"
             android:textColor="@color/colorContent"
             android:textSize="15sp" />
 
