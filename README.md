@@ -1,6 +1,6 @@
 # Android使用RxJava+Retrofit2+Okhttp+MVP练习的APP
 
-[文章链接](http://wangyuheng.github.io)
+[文章链接](https://www.cnblogs.com/liuyu0529/p/7675793.html)
 
 ![](https://ws1.sinaimg.cn/large/006ISEZBly1frrgxk4ixkj30sp1cfnfd.jpg)
 
